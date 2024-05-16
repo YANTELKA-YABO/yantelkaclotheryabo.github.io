@@ -286,9 +286,7 @@ footer {
             showSection(sectionId);
         });
     });
-
-    // Afficher la section "À Propos" par défaut au chargement de la page
-    showSection('a-propos');
+    
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -302,6 +300,8 @@ document.addEventListener('DOMContentLoaded', function() {
             showAllLink.addEventListener('click', function(event) {
                 event.preventDefault();
                 showAllSections();
+
+                showSection('tous');
             });
         });
 
