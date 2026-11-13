@@ -1,312 +1,583 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio -Yantelkayabo</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Portfolio professionnel de Yantelka Yabo, informaticien spécialisé en systèmes, réseaux, développement web et collecte de données.">
+    <title>Yantelka Yabo | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --dark: #101c35;
+            --blue: #1769e0;
+            --light: #f4f7fc;
+            --text: #263449;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 20px 7%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #62a4ff;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 55px;
+            padding: 75px 7%;
+            background: linear-gradient(135deg, #101c35, #183f78);
+            color: white;
+        }
+
+        .hero img {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 21px;
+            color: #a9ceff;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--blue);
+            color: white;
+            padding: 11px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 5px 8px 5px 0;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0b4fb2;
+            transform: translateY(-2px);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 35px 20px;
+        }
+
+        section {
+            background: white;
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: var(--dark);
+            font-size: 25px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--blue);
+            padding-left: 12px;
+        }
+
+        .about p {
+            margin-bottom: 13px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 9px;
+            border-bottom: 3px solid var(--blue);
+        }
+
+        .card h3 {
+            color: var(--blue);
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+        }
+
+        .timeline-item {
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--blue);
+            background: var(--light);
+            border-radius: 5px;
+        }
+
+        .timeline-item h3 {
+            color: var(--dark);
+        }
+
+        .date {
+            color: var(--blue);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .skill {
+            margin-bottom: 12px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .progress {
+            height: 9px;
+            background: #e1e8f2;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress span {
+            display: block;
+            height: 100%;
+            background: var(--blue);
+            border-radius: 10px;
+        }
+
+        .contact a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        .contact p {
+            margin: 12px 0;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 45px 20px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero img {
+                width: 150px;
+                height: 150px;
+            }
+
+            section {
+                padding: 22px 17px;
+            }
+        }
+    </style>
 </head>
-<style>
-  
-body{
-    
-}
-header {
-    
-    background-color: #f0f0f0;
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    top: 0;
-    width: 100%;
-    z-index: 19;
-    padding: 0% 0% 0% 7%;
-   
-    
-}
 
-body {
-    margin: 0;
-    padding: 0;
-}
-
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-}
-
-main {
-    position: relative; /* Or position: static if no other positioning is needed */
-    margin-top: 10px;
-    
-
-}
-
-section {
-    margin-bottom: 40px;
-}
-
-h2 {
-    margin-top: 0;
-}
-
-ul {
-    list-style: disc;
-    padding: 0;
-    margin: 20px 0;
-}
-
-footer {
-    background-color: #f0f0f0;
-    text-align: center;
-    padding: 10px;
-    margin-top: 40px;
-}
-
-#tou{
-    margin-left: 10%;
-    text-align: center;
-}
-
-.rounded-image {
-    border-radius: 50% 50% 50% 50%;
-}
-#experience{
-    background-color: rgb(230, 237, 238);
-}
-#contact{
-    background-color: rgb(221, 226, 230);
-}
-#Langue{
-    background-color: rgb(221, 226, 230);
-}
-
-
-</style>
 <body>
-   
-    <header>
 
+<header>
+    <div class="navbar">
+        <div class="logo">YANTELKA YABO</div>
 
-        
-       
-
-            <img src="IMG_20230330_152517_389.jpg" class="rounded-image" alt="" width="12%">
-
-    
-
-        <div id="tou">
-
-            <h1>YANTELKA YABO</h1>
-            <h2>ETUDIANT</h2>
-            <h2>Licence 3</h2>
-            <h2> MOUNDOU/TCHAD</h2>
-            <nav>
-<nav>
-    <ul>
-      
-        <li><a href="#a-propos">À Propos</a></li>
-        <li><a href="#attestations">Attestations</a></li>
-        <li><a href="#experience">Parcours</a></li>
-        <li><a href="#competences">Competences</a></li>
-        <li><a href="#Langue">Langue</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#tous">CV  complet</a></li>
-        
-    </ul>
-</nav>
-
-            </nav>
-
-       </div>   
-         
-    </header>
-
-    <main>
-        <section id="a-propos">
-            <h2>À Propos de Moi</h2>
-            <p>Étudiant en informatique passionné(e) par la <i>Programmation des application web</i>,
-                 je suis à la recherche d'un stage ou d'un emploi à temps partiel pour mettre en pratique mes connaissances 
-                 et acquérir une expérience professionnelle précieuse.</p>
-                 <p>
-                Actuellement en troisième(3) année à l'université de Ngaoundéré departement de mathematique et informatique.
-                J'ai également participé à divers projets comme UBUNTU PARTY qui m'ont permis d'appliquer mes connaissances théoriques à des problèmes concrets.
-                
-                Mes objectifs de carrière sont : être un expert programmeur dans les application web et aussi  être apte en administration reséaux.
-                Je suis convaincu(e) que mon enthousiasme pour l'informatique,
-                mes compétences techniques et ma capacité d'apprentissage me permettront de réussir dans ce domaine.</p>
-                <p>
-                Je suis à la recherche d'une opportunité qui me permettra de :
-                
-                Appliquer mes connaissances et mes compétences en informatique dans un environnement professionnel.
-                Travailler avec des professionnels expérimentés et apprendre d'eux.
-                Contribuer à des projets stimulants et significatifs.
-                N'hésitez pas à me contacter pour en savoir plus sur mon parcours et mes qualifications. Je suis disponible pour un entretien à votre convenance.<br><br>
-                
-                Voici quelques liens vers mes réalisations :<br><br>
-                
-                <a href="https://yaboyantelka.netlify.app/">https://yaboyantelka.netlify.app/</a> <br>
-                
-        </section>
-
-      
-
-        <section id="experience">
-            <h2>Parcours</h2>
+        <nav>
             <ul>
-                
-
-                    <h5><li>ECOLE</li></h5>
-                    
-                   
-                    <p>
-                        -De CP1-CP2 ECOLE-FRANCO-ARABE-BATIL 2008-2010<br>
-                        -De CE1-CM2 ECOLE-PRIMAIRE-LUTHERIEN-DE-MOUNDOU 2010-2014<br>
-                        -De 6eme-3eme LYCEE-COLLEGE-LUTHERIEN-DE-MOUNDOU 2014-2018<br>
-                        -De 2nd-TD LYCEE-COLLEGE-LUTHERIEN-DE-MOUNDOU 2018-2021<br>
-                    </p>
-
-                    <h5><li>UNIVERSITE</li></h5>
-                    
-                   
-                    <p>
-                         LICENCE1-LICENCE2 UNIVERSITE-DE-NGAOUNDERE-2021-2023<br>
-        
-                    </p>
-             
-                
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#formation">Formation</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#certificats">Certificats</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </section>
+        </nav>
+    </div>
+</header>
 
-        <section id="attestations">
-            <h2>Attestations</h2>
-            <ul>
-                <li>BREVET D'ETUDE FONDAMENTAL</li><br>
-                <li>BACCALAUREAT</li><br>
-                <li>RELEVER DE NOTE LICENCE1</li><br>
-                <li>RELEVER DE NOTE LICENCE2</li>
-            </ul>
-        </section>
+<!-- ACCUEIL -->
+<div class="hero" id="accueil">
+    <img src="IMG_20230330_152517_389.jpg" alt="Photo de Yantelka Yabo">
 
-        <section id="Langue">
-            <h2>Langue</h2>
-            <ul>
-                <li>Français <input type="range" value="75" disabled></li><br>
-                <li>Anglais  <input type="range" value="25" disabled></li><br>
-                
-            </ul>
-        </section>
+    <div>
+        <h1>YANTELKA YABO</h1>
+        <h2>Informaticien | Systèmes et réseaux</h2>
 
-        <section id="competences">
-            <h2>Competences</h2>
-            <ul>
+        <p>
+            Passionné par les technologies numériques, l'administration
+            des systèmes et réseaux, le développement web et les solutions
+            informatiques adaptées aux besoins des organisations.
+        </p>
 
-                <li>Word<input type="range" value="85" disabled></li><br>
-                <li>Exel<input type="range" value="60" disabled></li><br>
-                <li>Powerpoint<input type="range" value="70" disabled></li><br>
-                <li>html et css<input type="range" value="55" disabled></li><br>
-                <li>Photoshop<input type="range" value="75" disabled></li>
-                
-            </ul>
-        </section>
+        <a href="#contact" class="btn">Me contacter</a>
+        <a href="#projets" class="btn">Voir mes projets</a>
+    </div>
+</div>
 
-        <section id="contact">
-            <h2>Contactez-Moi</h2>
+<main>
+
+    <!-- A PROPOS -->
+    <section id="apropos" class="about">
+        <h2>À propos de moi</h2>
+
+        <p>
+            Je suis Yantelka Yabo, informaticien titulaire d'une Licence
+            en informatique de l'Université de Ngaoundéré.
+            Je m'intéresse particulièrement à l'administration des systèmes
+            et réseaux, à la maintenance informatique, au développement
+            d'applications web et à la collecte numérique de données.
+        </p>
+
+        <p>
+            Mon parcours m'a permis de développer des compétences pratiques
+            dans l'installation et la configuration des ordinateurs,
+            la maintenance informatique, l'assistance aux utilisateurs,
+            les outils de collecte de données et les technologies réseau.
+        </p>
+
+        <p>
+            J'ai également effectué un stage à l'Assemblée nationale du Tchad,
+            où j'ai participé à des activités informatiques et à l'exploitation
+            des équipements de sonorisation.
+        </p>
+
+        <p>
+            Je suis ouvert aux opportunités de stage, d'emploi et de
+            collaboration me permettant de mettre mes compétences au service
+            d'une entreprise, d'une organisation ou d'une institution.
+        </p>
+    </section>
+
+    <!-- FORMATION -->
+    <section id="formation">
+        <h2>Formation académique</h2>
+
+        <div class="timeline-item">
+            <h3>Licence en informatique</h3>
+            <p class="date">Université de Ngaoundéré</p>
+            <p>Formation universitaire en informatique.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Baccalauréat</h3>
+            <p class="date">2021</p>
+            <p>Lycée-Collège Luthérien de Moundou.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Études secondaires et primaires</h3>
             <p>
-                <img src="gmail_48px.png" alt="">yaboyantelka@gmail.com<br><br>
-                <a href="https://www.facebook.com/profile.php?id=100086601064697&mibextid=rS40aB7S9Ucbxw6v"><img src="facebook_48px.png" alt=""></a><br><br>
-                <a href="https://www.instagram.com/yaboclother?igsh=ZzNheXkwYW1mNm1n"><img src="instagram_48px.png" alt=""></a><br><br>
-                <img src="whatsapp_48px.png" alt="">+237 696 95 29 00<br><br>
-
-
-            
+                Lycée-Collège Luthérien de Moundou et établissements scolaires
+                de Moundou.
             </p>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <h2>Expériences professionnelles</h2>
 
+        <div class="timeline-item">
+            <h3>Stagiaire en informatique et sonorisation</h3>
+            <p class="date">Assemblée nationale du Tchad | Septembre 2025 – Janvier 2026</p>
 
-    
+            <p><strong>Activités réalisées :</strong></p>
+            <ul>
+                <li>Installation et configuration de postes informatiques.</li>
+                <li>Maintenance préventive et assistance informatique.</li>
+                <li>Installation et mise à jour de logiciels.</li>
+                <li>Assistance aux utilisateurs.</li>
+                <li>Participation à l'installation et à l'exploitation des équipements de sonorisation.</li>
+                <li>Assistance lors des séances et activités institutionnelles.</li>
+            </ul>
+        </div>
+    </section>
 
-    <footer>  
-        <p>&copy; YANTELKA YABO 2023/2024</p>
-    </footer>
+    <!-- COMPETENCES -->
+    <section id="competences">
+        <h2>Compétences techniques</h2>
 
-    <script>
- document.addEventListener('DOMContentLoaded', function() {
-    // Récupération de tous les liens de navigation
-    var navLinks = document.querySelectorAll('nav a');
+        <div class="skills">
 
-    // Fonction pour masquer toutes les sections sauf celle spécifiée par l'ID
-    function showSection(sectionId) {
-        // Récupération de toutes les sections
-        var sections = document.querySelectorAll('main section');
-        // Parcours de chaque section
-        sections.forEach(function(section) {
-            // Masquage de la section si elle ne correspond pas à l'ID spécifié
-            if (section.id !== sectionId) {
-                section.style.display = 'none';
-            } else {
-                // Affichage de la section correspondant à l'ID spécifié
-                section.style.display = 'block';
-            }
-        });
-    }
+            <div>
+                <h3>Administration informatique</h3>
 
-    // Ajout d'un gestionnaire d'événement de clic à chaque lien de navigation
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', function(event) {
-            // Empêcher le comportement par défaut du lien (redirection)
-            event.preventDefault();
-            // Récupération de l'ID de la section à afficher
-            var sectionId = link.getAttribute('href').substring(1);
-            // Affichage de la section correspondante
-            showSection(sectionId);
-        });
-    });
-    
-});
+                <div class="skill">
+                    <div class="skill-name"><span>Installation Windows</span></div>
+                    <div class="progress"><span style="width:85%"></span></div>
+                </div>
 
-document.addEventListener('DOMContentLoaded', function() {
-            var showAllLink = document.querySelector('nav a[href="#tous"]');
-            function showAllSections() {
-                var sections = document.querySelectorAll('main section');
-                sections.forEach(function(section) {
-                    section.style.display = 'block';
-                });
-            }
-            showAllLink.addEventListener('click', function(event) {
-                event.preventDefault();
-                showAllSections();
+                <div class="skill">
+                    <div class="skill-name"><span>Maintenance informatique</span></div>
+                    <div class="progress"><span style="width:80%"></span></div>
+                </div>
 
-                showSection('tous');
-            });
-        });
+                <div class="skill">
+                    <div class="skill-name"><span>Configuration réseau</span></div>
+                    <div class="progress"><span style="width:75%"></span></div>
+                </div>
+            </div>
 
+            <div>
+                <h3>Développement et données</h3>
 
+                <div class="skill">
+                    <div class="skill-name"><span>HTML / CSS / JavaScript</span></div>
+                    <div class="progress"><span style="width:70%"></span></div>
+                </div>
 
-    </script>
+                <div class="skill">
+                    <div class="skill-name"><span>MySQL</span></div>
+                    <div class="progress"><span style="width:65%"></span></div>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-name"><span>KoboToolbox</span></div>
+                    <div class="progress"><span style="width:80%"></span></div>
+                </div>
+            </div>
+
+            <div>
+                <h3>Outils informatiques</h3>
+
+                <div class="skill">
+                    <div class="skill-name"><span>Microsoft Word</span></div>
+                    <div class="progress"><span style="width:85%"></span></div>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-name"><span>Microsoft Excel</span></div>
+                    <div class="progress"><span style="width:75%"></span></div>
+                </div>
+
+                <div class="skill">
+                    <div class="skill-name"><span>PowerPoint</span></div>
+                    <div class="progress"><span style="width:75%"></span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <h3 style="margin-top:25px;">Autres compétences</h3>
+        <ul>
+            <li>Configuration et simulation de réseaux avec Cisco Packet Tracer.</li>
+            <li>Collecte numérique de données avec KoboToolbox.</li>
+            <li>Utilisation des outils d'intelligence artificielle.</li>
+            <li>Notions de développement d'applications Android.</li>
+            <li>Utilisation de logiciels de sonorisation et d'équipements audio.</li>
+            <li>Photoshop et montage vidéo avec CapCut.</li>
+        </ul>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projets">
+        <h2>Projets et réalisations</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>ÉCOLE CONNECTÉE</h3>
+                <p>
+                    Développement en cours d'une solution numérique de gestion
+                    scolaire. Le projet comprend notamment la gestion des élèves,
+                    des notes, des bulletins, des emplois du temps et des présences.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Collecte numérique avec KoboToolbox</h3>
+                <p>
+                    Conception de formulaires de collecte de données,
+                    intégration de la géolocalisation et mise en place
+                    de contrôles pour les enquêtes dans les établissements scolaires.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Réseaux informatiques</h3>
+                <p>
+                    Travaux pratiques de configuration et de simulation
+                    de réseaux informatiques avec Cisco Packet Tracer.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Projets web</h3>
+                <p>
+                    Réalisation de pages et d'interfaces web avec
+                    HTML, CSS et JavaScript.
+                </p>
+                <a href="https://yaboyantelka.netlify.app/" target="_blank" rel="noopener">
+                    Voir une réalisation
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CERTIFICATS -->
+    <section id="certificats">
+        <h2>Certificats et attestations</h2>
+
+        <ul>
+            <li>Attestation de formation en intelligence artificielle – Rendez-vous Numérique / REINDOS SOCIAL.</li>
+            <li>Certification Cisco Packet Tracer – Premiers pas avec Packet Tracer.</li>
+            <li>Certificat Introduction à la cybersécurité.</li>
+            <li>Brevet d'études fondamentales.</li>
+            <li>Baccalauréat.</li>
+        </ul>
+    </section>
+
+    <!-- LANGUES -->
+    <section id="langues">
+        <h2>Langues</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Français</h3>
+                <p>Courant</p>
+            </div>
+
+            <div class="card">
+                <h3>Anglais</h3>
+                <p>Débutant avancé</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+
+        <p><strong>Localisation :</strong> Moundou, Tchad</p>
+
+        <p>
+            <strong>Email :</strong>
+            <a href="mailto:yaboyantelka@gmail.com">
+                yaboyantelka@gmail.com
+            </a>
+        </p>
+
+        <p>
+            <strong>Facebook :</strong>
+            <a href="https://www.facebook.com/profile.php?id=100086601064697" target="_blank" rel="noopener">
+                Mon profil Facebook
+            </a>
+        </p>
+
+        <p>
+            <strong>Instagram :</strong>
+            <a href="https://www.instagram.com/yaboclother" target="_blank" rel="noopener">
+                Mon profil Instagram
+            </a>
+        </p>
+
+        <p>
+            <strong>Disponibilité :</strong>
+            Ouvert aux opportunités professionnelles et aux collaborations.
+        </p>
+
+        <a href="mailto:yaboyantelka@gmail.com" class="btn">
+            Envoyer un email
+        </a>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 YANTELKA YABO — Tous droits réservés.</p>
+    <p>Portfolio professionnel</p>
+</footer>
+
 </body>
 </html>
